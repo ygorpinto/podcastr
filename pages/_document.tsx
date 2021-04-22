@@ -5,8 +5,8 @@ export default class MyDocument extends Document {
         return (
             <Html>
                 <Head>
-                    <title>Podcastr</title>
                 </Head>
+                    <title>Podcastr</title>
                 <Main />
                 <NextScript />
             </Html>
