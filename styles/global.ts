@@ -21,11 +21,32 @@ const GlobalStyles = createGlobalStyle`
 
 }
 
-body {
-    
+* {
+
     margin:0;
     padding:0;
     box-sizing:border-box;
+}
+
+body {
+    background-color:var(--gray-50);
+
+}
+body, input, textarea, button {
+    font: 500 1rem sans-serif;
+    color:var(---gray-500);
+}
+
+h1 {
+    font-size:2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+button {
+    cursor: pointer;
 }
 `
 
