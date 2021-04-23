@@ -1,15 +1,20 @@
 import Header from "../components/Header/Header"
 import Player from "../components/Player/Player"
 import GlobalStyles from "../styles/global"
+import Wrapper from "../styles/wrapper"
 
 function MyApp({ Component, pageProps }) {
   return (
-      <>
-        <GlobalStyles/>
-        <Header/>
-        <Player/>
-        <Component {...pageProps} />
-      </>
+    <>
+      <GlobalStyles />
+      <Wrapper>
+        <main>
+          <Header />
+          <Component {...pageProps} />
+        </main>
+        <Player />
+      </Wrapper>
+    </>
   )
 }
 

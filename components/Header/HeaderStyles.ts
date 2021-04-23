@@ -3,6 +3,7 @@ import styled from 'styled-components'
 const HeaderStyles = styled.header`
 background:var(--white);
 height:6.5rem;
+width:100%;
 display:flex;
 align-items:center;
 padding:2rem 4rem;
