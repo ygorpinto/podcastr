@@ -6,6 +6,7 @@ import { api } from '../../services/api';
 import EpisodesStyles from '../../styles/episodes';
 import Image from 'next/image'
 import { convertDurationToTimeString } from '../../utils/convertDutationToTimeString';
+import Link from 'next/link';
 
 
 const Episode = ({ episode }) => {
@@ -13,9 +14,11 @@ const Episode = ({ episode }) => {
 return (
     <EpisodesStyles>
         <div className="thumbnailContainer">
+            <Link href="/">
             <button>
                 <img src="/arrow-left.svg" alt="Voltar"/>
             </button>
+            </Link>
             <Image
             width={700}
             height={140}

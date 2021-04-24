@@ -19,6 +19,10 @@ span {
     margin-left:auto;
     text-transform:capitalize;
 }
+
+img {
+    cursor: pointer;
+}
 `
 
 export default HeaderStyles;
