@@ -48,7 +48,7 @@ export default function Home({ latestEpisodes, allEpisodes }) {
                   <span>{episode.durationAsString}</span>
                 </div>
                 <button type="button">
-                  <img src="play-green.svg" alt="Play" />
+                  <img src="/play-green.svg" alt="Play" />
                 </button>
               </li>
             )
@@ -91,7 +91,7 @@ export default function Home({ latestEpisodes, allEpisodes }) {
                     <td>{episode.durationAsString}</td>
                     <td>
                     <button type="button">
-                      <img src="play-green.svg" alt="Play" />
+                      <img src="/play-green.svg" alt="Play" />
                     </button>
                     </td>
                   </tr>

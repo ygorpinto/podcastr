@@ -3,12 +3,40 @@ import { ptBR } from 'date-fns/locale';
 import { GetStaticProps } from 'next';
 import { useRouter } from 'next/router'
 import { api } from '../../services/api';
+import EpisodesStyles from '../../styles/episodes';
+import Image from 'next/image'
 import { convertDurationToTimeString } from '../../utils/convertDutationToTimeString';
+
 
 const Episode = ({ episode }) => {
     const router = useRouter();
 return (
-    <h1>{router.query.params}</h1>
+    <EpisodesStyles>
+        <div className="thumbnailContainer">
+            <button>
+                <img src="/arrow-left.svg" alt="Voltar"/>
+            </button>
+            <Image
+            width={700}
+            height={140}
+            src={episode.thumbnail}
+            objectFit="cover"
+            />
+            <button>
+                <img src="/play.svg" alt="TocarEpisódio"/>
+            </button>
+        </div>
+
+        <header>
+            <h1>{episode.title}</h1>
+            <span>{episode.members}</span>
+            <span>{episode.publishedAt}</span>
+            <span>{episode.durationAsString}</span>
+        </header>
+
+        <div className="description" 
+        dangerouslySetInnerHTML={{__html:episode.description}}/>
+    </EpisodesStyles>
 )
 }
 
