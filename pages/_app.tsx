@@ -8,11 +8,11 @@ function MyApp({ Component, pageProps }) {
     <>
       <GlobalStyles />
       <Wrapper>
-        <main>
+        <div className="main">
           <Header />
           <Component {...pageProps} />
-        </main>
-        <Player />
+        </div>
+          <Player />
       </Wrapper>
     </>
   )
