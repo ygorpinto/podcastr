@@ -36,7 +36,9 @@ export default function Home({ latestEpisodes, allEpisodes }) {
                   alt={episode.title}
                   objectFit="cover"
                 />
-                <div className="episodeDetails">
+                <div 
+                style={{width:100}}
+                className="episodeDetails">
                   <a href="">{episode.title}</a>
                   <p>{episode.members}</p>
                   <span>{episode.publishedAt}</span>
@@ -49,6 +51,47 @@ export default function Home({ latestEpisodes, allEpisodes }) {
             )
           })}
         </ul>
+      </section>
+      <section className="allEpisodes">
+          <h2>Todos Episódios</h2>
+          <table cellSpacing={0}>
+            <thead>
+              <th></th>
+              <th>Poscast</th>
+              <th>Integrantes</th>
+              <th>Data</th>
+              <th>Duração</th>
+              <th></th>
+            </thead>
+            <tbody>
+              {allEpisodes.map(episode => {
+                return (
+                  <tr key={episode.id}>
+                    <td style={{width:100}}>
+                    <Image
+                    width={120}
+                    height={120}
+                    src={episode.thumbnail}
+                    alt={episode.title}
+                    objectFit="cover"
+                    />
+                    </td>
+                    <td>
+                      <a href="">{episode.title}</a>
+                    </td>
+                    <td>{episode.members}</td>
+                    <td style={{width:90}}>{episode.publishedAt}</td>
+                    <td>{episode.durationAsString}</td>
+                    <td>
+                    <button type="button">
+                      <img src="play-green.svg" alt="Play" />
+                    </button>
+                    </td>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
       </section>
     </HomeStyles>
   )
