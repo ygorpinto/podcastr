@@ -19,7 +19,11 @@ const Player = () => {
         playNext,
         playPrevious,
         hasNext,
-        hasPrevious
+        hasPrevious,
+        isLooping,
+        toggleLoop,
+        toggleShuffle,
+        isShuffling
     } = useContext(PlayerContext);
 
     useEffect(()=>{
@@ -80,13 +84,16 @@ const Player = () => {
                 src={episode.url}
                 autoPlay
                 ref={audioRef}
+                loop={isLooping}
                 onPlay={()=>setPlayingState(true)}
                 onPause={()=>setPlayingState(false)}
                 />
                 )}
                 <div className="buttons">
                     <button 
-                    disabled={!episode}
+                    disabled={!episode || episodeList.length===1}
+                    onClick={toggleShuffle}
+                    className={isShuffling ? "isActive" : ""}
                     type="button">
                         <img src="/shuffle.svg" alt="shuffle"/>
                     </button>
@@ -110,8 +117,10 @@ const Player = () => {
                     type="button">
                         <img src="/play-next.svg" alt="next"/>
                     </button>
-                    <button 
+                    <button
+                    className={isLooping ? "isActive" : ""} 
                     disabled={!episode}
+                    onClick={toggleLoop}
                     type="button">
                         <img src="/repeat.svg" alt="repeat"/>
                     </button>

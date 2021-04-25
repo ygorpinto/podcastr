@@ -119,6 +119,10 @@ footer {
             cursor:default;
             opacity:0.5;
         }
+
+        &.isActive {
+            filter:invert(0.35) sepia(1) saturate(3) hue-rotate(100deg);
+        }
     }
 }
 `

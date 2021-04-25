@@ -6,9 +6,16 @@ import EpisodesStyles from '../../styles/episodes';
 import Image from 'next/image'
 import { convertDurationToTimeString } from '../../utils/convertDutationToTimeString';
 import Link from 'next/link';
+import { useContext } from 'react';
+import { PlayerContext } from '../../contexts/PlayerContext';
 
 
 const Episode = ({ episode }) => {
+
+    const {
+        play
+    } = useContext(PlayerContext);
+
 return (
     <EpisodesStyles>
         <div className="thumbnailContainer">
@@ -23,7 +30,9 @@ return (
             src={episode.thumbnail}
             objectFit="cover"
             />
-            <button>
+            <button
+            onClick={() => play(episode)}
+            >
                 <img src="/play.svg" alt="TocarEpisódio"/>
             </button>
         </div>
