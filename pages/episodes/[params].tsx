@@ -8,6 +8,7 @@ import { convertDurationToTimeString } from '../../utils/convertDutationToTimeSt
 import Link from 'next/link';
 import { useContext } from 'react';
 import { PlayerContext } from '../../contexts/PlayerContext';
+import { Head } from 'next/document';
 
 
 const Episode = ({ episode }) => {

@@ -8,6 +8,7 @@ import { convertDurationToTimeString } from '../utils/convertDutationToTimeStrin
 import HomeStyles from '../styles/home';
 import { useContext } from 'react';
 import { PlayerContext } from '../contexts/PlayerContext';
+import { Head } from 'next/document';
 
 type HomeProps = {
   episodes: Array<{
