@@ -25,7 +25,8 @@ const Player = () => {
         isLooping,
         toggleLoop,
         toggleShuffle,
-        isShuffling
+        isShuffling,
+        clearPlayerState
     } = useContext(PlayerContext);
 
     useEffect(()=>{
@@ -50,6 +51,14 @@ const Player = () => {
     function handleSeek (amount) {
         audioRef.current.currentTime = amount
         setProgress(amount);
+    }
+
+    function handleEpisodeEnded () {
+        if (hasNext) {
+            playNext()
+        } else {
+            clearPlayerState()
+        }
     }
 
     const episode = episodeList[currentEpisodeIndex];
@@ -104,6 +113,7 @@ const Player = () => {
                 onPlay={()=>setPlayingState(true)}
                 onPause={()=>setPlayingState(false)}
                 onLoadedMetadata={setUpProgressListener}
+                onEnded={handleEpisodeEnded}
                 />
                 )}
                 <div className="buttons">
