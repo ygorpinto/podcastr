@@ -114,6 +114,10 @@ footer {
             border-radius:1rem;
             background:var(--purple-400);
         }
+
+        &:disabled {
+            cursor:default;
+        }
     }
 }
 `
