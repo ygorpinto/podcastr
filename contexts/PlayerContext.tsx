@@ -14,6 +14,7 @@ type PlayerContextData = {
     play: (Episode) => void;
     isPlaying:boolean;
     togglePlay:() => void;
+    setPlayingState: (state) => void;
 }
 
 export const PlayerContext = createContext({} as PlayerContextData);
@@ -34,6 +35,10 @@ const PlayerProvider = ({children}) => {
         setIsPlaying(!isPlaying);
     }
 
+    function setPlayingState (state:boolean) {
+        setIsPlaying(state);
+    }
+
     return (
         <PlayerContext.Provider
         value={{
@@ -41,7 +46,8 @@ const PlayerProvider = ({children}) => {
             currentEpisodeIndex,
             play,
             isPlaying,
-            togglePlay
+            togglePlay,
+            setPlayingState
         }}
         >
             {children}
