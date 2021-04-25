@@ -117,6 +117,7 @@ footer {
 
         &:disabled {
             cursor:default;
+            opacity:0.5;
         }
     }
 }
