@@ -6,6 +6,8 @@ import Link from 'next/link'
 import ptBR from 'date-fns'
 import { convertDurationToTimeString } from '../utils/convertDutationToTimeString';
 import HomeStyles from '../styles/home';
+import { useContext } from 'react';
+import { PlayerContext } from '../contexts/PlayerContext';
 
 type HomeProps = {
   eposides: Array<{
@@ -22,6 +24,9 @@ type HomeProps = {
 }
 
 export default function Home({ latestEpisodes, allEpisodes }) {
+
+  const {play} = useContext(PlayerContext);
+
   return (
     <HomeStyles>
       <section className="latestEpisodes">
@@ -47,7 +52,9 @@ export default function Home({ latestEpisodes, allEpisodes }) {
                   <span>{episode.publishedAt}</span>
                   <span>{episode.durationAsString}</span>
                 </div>
-                <button type="button">
+                <button 
+                onClick={()=>play(episode)}
+                type="button">
                   <img src="/play-green.svg" alt="Play" />
                 </button>
               </li>
@@ -90,7 +97,9 @@ export default function Home({ latestEpisodes, allEpisodes }) {
                     <td style={{width:90}}>{episode.publishedAt}</td>
                     <td>{episode.durationAsString}</td>
                     <td>
-                    <button type="button">
+                    <button 
+                    onClick={()=>play(episode)}
+                    type="button">
                       <img src="/play-green.svg" alt="Play" />
                     </button>
                     </td>

@@ -32,6 +32,29 @@ footer {
     }
 }
 
+.currentEpisode {
+    text-align:center;
+    font-size:0.875rem;
+
+    img {
+        border-radius:1.5rem;
+    }
+
+    strong {
+        display:block;
+        margin-top:0.5rem;
+        font: 600 1rem Lexend, sans-serif;
+        line-height:1.5rem;
+    }
+
+    span {
+        display:block;
+        margin-top:1rem;
+        opacity:0.6;
+        line-height:1.5rem;
+    }
+}
+
 .emptyPlayer {
     width:100%;
     height:20rem;
