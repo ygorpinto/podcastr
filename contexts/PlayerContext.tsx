@@ -74,13 +74,13 @@ const PlayerProvider = ({children}) => {
             const nextRandomEpisodeIndex = Math.floor(Math.random()*episodeList.length);
             setCurrentEpisodeIndex(nextRandomEpisodeIndex);
         } else if (hasNext) {
-            setCurrentEpisodeIndex(currentEpisodeIndex+1);
+            setCurrentEpisodeIndex(currentEpisodeIndex-1);
         }
     }
 
     function playPrevious () {
         if (hasPrevious) {
-            setCurrentEpisodeIndex(currentEpisodeIndex-1);
+            setCurrentEpisodeIndex(currentEpisodeIndex+1);
         }
     }
 

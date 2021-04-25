@@ -126,7 +126,7 @@ const Player = () => {
                     </button>
                     <button 
                     disabled={!episode || !hasNext}
-                    onClick={playNext}
+                    onClick={playPrevious}
                     type="button">
                         <img src="/play-previous.svg" alt="prev"/>
                     </button>
@@ -140,7 +140,7 @@ const Player = () => {
                     </button>
                     <button 
                     disabled={!episode || !hasPrevious}
-                    onClick={playPrevious}
+                    onClick={playNext}
                     type="button">
                         <img src="/play-next.svg" alt="next"/>
                     </button>
