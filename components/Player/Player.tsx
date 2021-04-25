@@ -1,14 +1,16 @@
 import Image from "next/image";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { PlayerContext } from "../../contexts/PlayerContext";
 import PlayerStyles from "./PlayerStyles"
 import Slider from 'rc-slider'
 
 import 'rc-slider/assets/index.css'
+import { convertDurationToTimeString } from "../../utils/convertDutationToTimeString";
 
 const Player = () => {
 
     const audioRef = useRef<HTMLAudioElement>(null);
+    const [progress, setProgress] = useState(0);
 
     const {
         episodeList,
@@ -38,6 +40,18 @@ const Player = () => {
         }
     },[isPlaying])
 
+    function setUpProgressListener () {
+        audioRef.current.currentTime = 0;
+        audioRef.current.addEventListener('timeupdate', e => {
+            setProgress(Math.floor(audioRef.current.currentTime));
+        })
+    }
+
+    function handleSeek (amount) {
+        audioRef.current.currentTime = amount
+        setProgress(amount);
+    }
+
     const episode = episodeList[currentEpisodeIndex];
 
     return (
@@ -62,22 +76,24 @@ const Player = () => {
                     <strong>Selecione um poscast para ouvir.</strong>
                 </div>
             )}
-            
             <footer className={!episode ? "empty" : ""}>
                 <div className="progress">
-                    <span>00:00</span>
+                    <span>{convertDurationToTimeString(progress)}</span>
                     <div className="slider">
                         {episode ? (
                             <Slider
                             trackStyle={{backgroundColor:"#04d361"}}
                             railStyle={{backgroundColor:"#9f75ff"}}
                             handleStyle={{borderColor:"#04d361", borderWidth:4}}
+                            max={Number(episode?.duration)}
+                            value={progress}
+                            onChange={handleSeek}
                             />
                         ) : (
                             <div className="emptySlider"/>
                         )}
                     </div>
-                    <span>00:00</span>
+                    <span>{convertDurationToTimeString(Number(episode?.duration ?? 0))}</span>
                 </div>
                 {episode && (
                 <audio
@@ -87,6 +103,7 @@ const Player = () => {
                 loop={isLooping}
                 onPlay={()=>setPlayingState(true)}
                 onPause={()=>setPlayingState(false)}
+                onLoadedMetadata={setUpProgressListener}
                 />
                 )}
                 <div className="buttons">

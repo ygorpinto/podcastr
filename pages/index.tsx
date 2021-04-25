@@ -10,7 +10,7 @@ import { useContext } from 'react';
 import { PlayerContext } from '../contexts/PlayerContext';
 
 type HomeProps = {
-  eposides: Array<{
+  episodes: Array<{
     id: string;
     title: string;
     thumbnail: string;
@@ -28,7 +28,7 @@ export default function Home({ latestEpisodes, allEpisodes }) {
   const { playList } = useContext(PlayerContext);
 
   const episodeList = [...latestEpisodes,...allEpisodes];
-
+  
   return (
     <HomeStyles>
       <section className="latestEpisodes">
@@ -131,8 +131,8 @@ export const getStaticProps: GetStaticProps = async () => {
       thumbnail: episode.thumbnail,
       members: episode.members,
       publishedAt: format(parseISO(episode.published_at), "d MMM yy", { locale: ptBR }),
-      duration: Number(episode.file.duration),
-      durationAsString: convertDurationToTimeString(Number(episode.file.duration)),
+      duration: parseInt(episode.file.duration),
+      durationAsString: convertDurationToTimeString(parseInt(episode.file.duration)),
       description: episode.description,
       url: episode.file.url,
     };
